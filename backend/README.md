@@ -1,0 +1,5 @@
+routes-
+
+1.  "/upload-student" -> upload student data in the database
+
+2.  "/mark-absent" -> make student attendance to false
