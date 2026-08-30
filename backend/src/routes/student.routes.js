@@ -50,12 +50,44 @@ router.patch("/mark-present/:RegID", async(req, res) => {
         const student = await studentModel.findOneAndUpdate({RedID : regID}, {attendance : true})
 
         res.status(200).json({
-            "message" : "marked absent successfully",
+            "message" : "marked present successfully",
             student
         })
     } catch(e) {
         res.status(500).json({
-            "message" : "could not mark absent",
+            "message" : "could not mark present",
+            "error": e.message
+        })
+    }
+})
+
+router.get("/all-present", async(req, res) => {
+    try{
+        const students = await studentModel.find({attendance : true})
+
+        res.status(200).json({
+            "message" : "all present student fetched successfully"
+        })
+
+    }catch(e) {
+        res.status(500).json({
+            "message" : "could not fetch present students",
+            "error": e.message
+        })
+    }
+})
+
+router.get("/all-absent", async(req, res) => {
+    try{
+        const students = await studentModel.find({attendance : false})
+
+        res.status(200).json({
+            "message" : "all absent student fetched successfully"
+        })
+
+    }catch(e) {
+        res.status(500).json({
+            "message" : "could not fetch absent student",
             "error": e.message
         })
     }
