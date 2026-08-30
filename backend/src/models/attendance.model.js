@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const studentSchema = new mongoose.Schema({
     Name: String,
-    RegID: Number,
+    RegID: String,
     attendance: Boolean
 })
 

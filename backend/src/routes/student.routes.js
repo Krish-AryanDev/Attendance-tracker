@@ -25,6 +25,22 @@ router.post("/upload-student", async(req, res) => {
     }
 })
 
+router.patch("/mark-absent/:RedID", async(req, res) => {
+    try{
+        const regID = req.params.RegID
 
+        const student = await studentModel.findOneAndUpdate({RedID : regID}, {attendance : false})
+
+        res.status(200).json({
+            "message" : "marked absent successfully",
+            student
+        })
+    } catch(e) {
+        res.status(500).json({
+            "message" : "could not mark absent",
+            "error": e.message
+        })
+    }
+})
 
 module.exports = router
