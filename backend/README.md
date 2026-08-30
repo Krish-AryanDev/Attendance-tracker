@@ -1,5 +1,7 @@
 routes-
 
+API_URL = https://localhost:5000/api/student
+
 1.  "/upload-student" -> upload student data in the database
 
 2.  "/mark-absent" -> make student attendance to false
